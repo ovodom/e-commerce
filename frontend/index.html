@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Place Order</title>
+</head>
+<body>
+  <h1>Place an Order</h1>
+
+  <textarea id="orderInput" rows="10" cols="50">
+{
+  "product_id": 1,
+  "quantity": 2
+}
+  </textarea><br><br>
+
+  <button onclick="submitOrder()">Submit Order</button>
+
+  <p id="response"></p>
+
+  <script>
+    function submitOrder() {
+      const jsonInput = document.getElementById('orderInput').value;
+
+      fetch('http://backend:5000/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: jsonInput
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('response').innerText = JSON.stringify(data);
+      })
+      .catch(error => {
+        document.getElementById('response').innerText = 'Error: ' + error;
+      });
+    }
+  </script>
+</body>
+</html>
