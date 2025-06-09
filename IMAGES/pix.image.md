@@ -34,3 +34,10 @@
 
 ![img](img/img6.png)
 
+
+
+
+
+7. 
+
+![img](img/img7.png)
